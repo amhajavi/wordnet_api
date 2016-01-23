@@ -1,0 +1,40 @@
+truncate syn_word ;
+truncate synsets ;
+truncate word_word ;
+truncate words ;
+truncate synset_synset;
+
+create table words (
+	id integer,
+	word_value varchar(100),
+	pos varchar(100),
+	ava varchar(100),
+	constraint words_pk PRIMARY KEY(id)
+);
+
+create table synsets (
+	id integer,
+	pos varchar(100),
+	semcat varchar(100),
+	gloss varchar(500),
+	constraint syns_pk PRIMARY KEY(id)
+);
+
+create table syn_word (
+	sid integer,
+	wid integer
+);
+
+create table word_word (
+	wid_1 integer,
+	sid_1 integer,
+	wid_2 integer,
+	sid_2 integer,
+	relation varchar(100)
+);
+
+create table synset_synset (
+	id_1 integer,
+	id_2 integer,
+	relation varchar(100)
+);

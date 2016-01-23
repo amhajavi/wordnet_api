@@ -1,0 +1,224 @@
+\documentclass{beamer}
+% Replace the \documentclass declaration above
+% with the following two lines to typeset your
+% lecture notes as a handout:
+%\documentclass{article}
+%\usepackage{beamerarticle}
+\usepackage{mathtools,amssymb, amsfonts}
+\usetheme{Marburg}
+\setbeamersize{sidebar width right=2cm}
+\setbeamertemplate{sidebar right}
+{
+  {\usebeamerfont{title in sidebar}%
+    \vskip1.5em%
+    \usebeamercolor[fg]{title in sidebar}%
+    \insertshorttitle[width=1.9cm,center,respectlinebreaks]\par%
+    \vskip1.25em%
+  }%
+  \hbox to2cm{\hss\insertlogo\hss}
+  \vskip1.25em%
+  \insertverticalnavigation{\2cm}%
+  \vfill
+  \hbox to2cm{\hskip0.8cm\usebeamerfont{subsection in
+      sidebar}\strut\usebeamercolor[fg]{subsection in
+      sidebar}\insertframenumber/\inserttotalframenumber\hfill}%
+  \vskip3pt%
+}%
+
+
+
+\title{Some Basics over Fars-net and Word-net}
+\subtitle{}
+\author{Amir Hossein Hajavi}
+\institute[University of Tehran]{ % (optional, but mostly needed)
+University of Tehran
+}
+\date{Course of Natural Language Processing, winter 2015}
+\subject{Combinatorics On words}
+
+ \AtBeginSubsection[]
+{
+	\begin{frame}<beamer>{Outline}
+	\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+ \begin{document}
+
+ \begin{frame}
+\titlepage
+\end{frame}
+
+ \begin{frame}{Outline}
+\tableofcontents
+% You might wish to add the option [pausesections]
+\end{frame}
+
+ % Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Farsnet}
+
+\subsection{What Farsnet Does}
+
+\begin{frame}{Farsnet}{What Farsnet Does}
+	\begin{itemize}
+		\item<1-> {	Farsnet is the most known Persian Word-net. }
+   	    \item<2-> {	It covers all type of words with relations between them.}
+		\item<3-> {	It contains over 15000 words in 10000 synsets (explained later on)}
+		\item<4-> {	It has been created semi-automatically.}
+	\end{itemize}
+\end{frame}
+
+\subsection{How is it related to other Word-nets}	
+
+\begin{frame}{Farsnet}{How is it related to other Word-nets}
+	\begin{itemize}
+		\item<1-> { Relations are same as Princton's Word-net. }
+		\item<2-> {	Farsnet's core is a translation of Balkan Word-net. }
+		\item<3-> {	It makes some relations over synsets to other Word-net for translation purposes. }
+	\end{itemize}
+\end{frame}
+
+\section{Word-nets}
+
+\subsection{How they're made}
+
+\begin{frame}{Word-nets}{How they're made}
+	\begin{itemize}
+		\item<1-> {
+			There are 4 type of words which play important roles.
+		}
+		\item<2-> {
+			In dictionaries all of them are ordered alphabetically.
+		}
+		\item<3-> {
+			Word-nets divide them in synsets (each synset has only one syntactic role. )
+		}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word-nets}{How they're made}
+
+	\begin{itemize}
+		\item<1-> {
+				All word forms represent a word meaning.
+			}
+		\item<2-> {
+				Some words have several meanings. 
+			}
+		\item<3->{
+				Some meaning can be presented with several words. 	
+			}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word-nets}{How they're made}
+	Psycholinguistics use the box model to illustrate the relationship between word and meaning.  
+	\begin{itemize}
+		\item<1-> {
+				A box for meanings.
+			}
+		\item<2-> {
+				A box for word forms.
+			}
+		\item<3->{
+				Arrows between these two boxes to relate the meanings.
+			}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word-nets}{How they're made}
+	We use a different kind of model but still the same.
+	\begin{itemize}
+		\item<1-> {
+				All word forms are as column heads of a matrix.
+			}
+		\item<2-> {
+				All word meanings are as row initials of the matrix
+			}
+		\item<3->{
+				A cell of matrix is 1 if the corresponding word presents the corresponding meaning otherwise it's 0
+			}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word-nets}{How they're made}
+	Now to make it a network.
+	\begin{itemize}
+		\item<1-> {
+				Make each word form a node.
+			}
+		\item<2-> {
+				Consider a row in this matrix and draw out cells that are 1 in it.
+			}
+		\item<3->{
+				Add a relation of synonymy between every node which is in those drawn out words. 	
+			}
+		\item<3->{
+				There would be disconnected subgraphs of words afterwards.
+			}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Word-nets}{How they're made}
+	Now to make it a network.
+	\begin{itemize}
+		\item<1-> {
+				Each pair of meanings have their own relation.
+			}
+		\item<2-> {
+				Every pair of word forms follow their meanings in relations
+			}
+		\item<3->{
+				Adding those relations together makes the subgraphs as a whole.	
+			}
+	\end{itemize}
+\end{frame}
+
+\subsection{How they're represented}
+
+\begin{frame}{Word-nets}{How they're represented}
+	Now to make it a network.
+	\begin{itemize}
+		\item<1-> {
+				Showing these graphs can be different.
+			}
+		\item<2-> {
+				Since we only need one relation over this graph it can be a tree form.
+			}
+		\item<3->{
+				Hence best tool for trees comes as XML files. Word-nets usually go in XML forms
+			}
+	
+	\end{itemize}
+\end{frame}
+
+\section{Farsnet Semi Automation}
+
+\subsection{Automation}
+\begin{frame}{Farsnet}{Automation}
+	Automation of Farsnet with various assists.
+	\begin{itemize}
+		\item<1-> {
+				Using morphological rules to expand relations.
+			}
+		\item<2-> {
+				Using syntactical occurrences for adjectives (From PLDB and Bijankhan). 
+			}
+		\item<3->{
+				Using wikipedia pages and analyzing them. 
+			}
+	\end{itemize}
+\end{frame}
+
+\subsection{Making it semi}
+\begin{frame}{Farsnet}{Semi Automation}
+	Using Dictionaries
+	\begin{itemize}
+		\item<1-> {
+				checking the received results with monolingual dictionaries like "SOKHAN".
+			}
+	\end{itemize}
+\end{frame}
+
+\end{document}
